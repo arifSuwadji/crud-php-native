@@ -19,11 +19,9 @@
         $dataLogin = array();
         $query = "SELECT * FROM `pengguna` WHERE username = '$username' AND password = sha1('$password')";
         $result = mysqli_query(Connect(), $query);
-        $objectOut = (object) array();
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_object($result);
             foreach($row as $key => $value){
-                $objectOut->$key = $value;
                 $dataLogin[$key] = $value;
             }
         }

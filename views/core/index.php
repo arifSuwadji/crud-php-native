@@ -35,7 +35,11 @@ else{
 }
 ?>
 <?php require_once 'views/header.php' ?>
-<?php require_once 'views/menu.php' ?>
+<?php 
+if(is_file("config/conn.php")){
+  require_once 'views/menu.php';
+}
+?>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">

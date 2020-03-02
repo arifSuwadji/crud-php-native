@@ -3,10 +3,10 @@
     date_default_timezone_set('Asia/Jakarta');
 
     //development or production
-    define('ENVIRONMENT', 'development');
+    define('ENVIRONMENT', 'pleasechangeme');
 
     //set base url
-    define ("BASE_URL","http://localhost/nixsms-center20/");
+    define ("BASE_URL","pleasechangeme");
     define ("PATH_NUMBER", 2);
     define ("COUNT_PATH", 3);
 ?>

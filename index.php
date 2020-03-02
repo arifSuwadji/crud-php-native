@@ -82,23 +82,32 @@
         $fileView = "/modules/$pathPage/index.php";
         if($pathPage == 'generator'){
             $fileView = '/views/core/index.php';
-        }else if($pathPage){
+        }if($pathPage){
             if(count($arrUrl) > COUNT_PATH){
                 $fileView = "/modules/$pathPage.php";
             }
         }else{
             $fileView = "/views/dashboard.php";
         }
-        if(!isset($_SESSION['dataUser'])){
-            $fileView = "/views/login.php";
+        if(empty($_SESSION['dataUser'])){
+            if($pathPage == 'generator'){
+                $fileView = '/views/core/index.php';
+            }else{
+                $fileView = "/views/login.php";
+            }
         }
         switch($pathPage){
             case 'logout' :
                 unset($_SESSION['dataUser']);
                 header("Location: ".BASE_URL);
             case 'dashboard':
-                require __DIR__ . "/views/dashboard.php";
-                break;
+                if(empty($_SESSION['dataUser'])){
+                    require __DIR__ . "/views/login.php";
+                    break;
+                }else{
+                    require __DIR__ . "/views/dashboard.php";
+                    break;
+                }
             case $pathPage:
                 require __DIR__ . $fileView;
                 break;
